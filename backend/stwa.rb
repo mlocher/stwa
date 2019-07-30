@@ -90,7 +90,7 @@ def stwa_status(event:, context:)
     case site[1]
     when "#EC1C24"
       state = :gale_warning
-    when "#ffc107--change-me"
+    when "#FFDD15"
       state = :advance_warning
     when '#8BC53F'
       state = :standby
