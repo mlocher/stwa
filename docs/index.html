@@ -57,10 +57,16 @@
                   state = 'Unknown';
               }
 
+              var popup = new mapboxgl.Popup({
+                  closeButton: false
+                })
+                .setHTML(`<strong>${data.name}</strong><br />${state}`);
+
               var marker = new mapboxgl.Marker({
                   color: color
                 })
-                .setLngLat(data.coordinates);
+                .setLngLat(data.coordinates)
+                .setPopup(popup);
 
               if (stwa.marker[station]) {
                 stwa.marker[station].remove();
