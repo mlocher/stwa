@@ -61,7 +61,7 @@ STWA = {
       coordinates: [16.69944444, 47.80361111]
     },
     weiden: {
-      name: "Weiden",
+      name: "STWA Weiden",
       state: :unknown,
       coordinates: [16.85222222, 47.91666667]
     }
