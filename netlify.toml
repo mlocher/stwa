@@ -1,7 +1,7 @@
 [build]
-  base = "."
-  publish = "site/"
-  functions = "functions/"
+  base = "./"
+  publish = "./site/"
+  functions = "./functions/"
 
 [[redirects]]
   from = "/api/*"
