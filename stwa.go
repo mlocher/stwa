@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -116,7 +115,6 @@ func stwa(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse
 
 	var sites []gjFeature
 	for _, site := range stwa.Sites {
-		fmt.Println(site.Name, site.State)
 		if site.Name == "Neusiedler See" {
 			continue
 		}
