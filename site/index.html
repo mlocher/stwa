@@ -20,7 +20,7 @@
 		<div id='map'></div>
 		<script>
 			mapboxgl.accessToken = 'pk.eyJ1IjoibWxvY2hlciIsImEiOiJfZWVkY0ZVIn0.88USuqZS5tBYfHNEisWaKw';
-      var markers = {};
+      
 			var map = new mapboxgl.Map({
 				container: 'map',
 				style: 'mapbox://styles/mapbox/light-v10',
@@ -49,11 +49,11 @@
           'cluster': false,
           'clusterRadius': 10,
           'clusterMaxZoom': 12,
-          'data': 'https://uqj85armfl.execute-api.eu-central-1.amazonaws.com/default/stwa.geojson'
+          'data': '/api/stwa'
           });
 
         stwaUpdater = window.setInterval(function() {
-          map.getSource('stwa').setData('./stwa.geojson');
+          map.getSource('stwa').setData('/api/stwa');
         }, 60000);
 
         map.addLayer({

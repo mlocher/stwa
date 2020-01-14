@@ -1,0 +1,8 @@
+[build]
+  base = "."
+  publish = "site/"
+  functions = "functions/"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
