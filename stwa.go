@@ -1,11 +1,12 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/aws/aws-lambda-go/events"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
@@ -84,7 +85,7 @@ func newFeatureCollection(features []gjFeature) gjFeatureCollection {
 	return fc
 }
 
-func stwa(ctx context.Context) (interface{}, error) {
+func stwa(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	stwaCoordinates := map[string][2]float32{
 		"Neusiedl":       [2]float32{16.83833333, 47.92666667},
 		"Weiden":         [2]float32{16.85222222, 47.91666667},
@@ -122,7 +123,15 @@ func stwa(ctx context.Context) (interface{}, error) {
 		sites = append(sites, newFeature(site.Name, site.State, stwaCoordinates[site.Name]))
 	}
 
-	return newFeatureCollection(sites), nil
+	geoJSON, err := json.Marshal(newFeatureCollection(sites))
+	if err != nil {
+		panic(err.Error())
+	}
+
+	return events.APIGatewayProxyResponse{
+		StatusCode: 200,
+		Body:       string(geoJSON),
+	}, nil
 }
 
 func main() {
