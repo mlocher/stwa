@@ -1,5 +1,0 @@
-ruby '2.5.5'
-source 'https://rubygems.org'
-
-gem 'faraday'
-gem 'faraday_middleware'
