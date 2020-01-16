@@ -128,6 +128,7 @@ func stwa(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
+		Headers:    map[string]string{"content-type": "application/json", "access-control-allow-origin": "*"},
 		Body:       string(geoJSON),
 	}, nil
 }
