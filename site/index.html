@@ -48,11 +48,12 @@
 				var stwaURL = '/.netlify/functions/stwa';
 
 				map.addSource('stwa', {
-					'type': 'geojson',
-					'cluster': false,
-					'clusterRadius': 10,
-					'clusterMaxZoom': 12,
-					'data': stwaURL
+					type: 'geojson',
+					cluster: false,
+					clusterRadius: 10,
+					clusterMaxZoom: 12,
+					data: stwaURL,
+					attribution: 'STWA data &copy; <a href="https://www.lsz-b.at/">LSZ Burgenland</a>'
 				});
 				stwaUpdater = window.setInterval(function() {
 					map.getSource('stwa').setData(stwaURL);
