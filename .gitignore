@@ -1,2 +1,2 @@
-backend/vendor
-backend/Gemfile.lock
+node_modules
+dist
