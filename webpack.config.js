@@ -2,7 +2,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const AssetsPlugin = require('assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -27,13 +26,9 @@ module.exports = {
   },
 
   plugins: [
-      new AssetsPlugin({
-        filename: './dist/assets/webpack.json',
-        prettyPrint: true
-      }),
-      new HtmlWebpackPlugin({
-        template: './site/index.html'
-      }),
+    new HtmlWebpackPlugin({
+      template: './site/index.html'
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
         { from: 'site', to: './', ignore: ['*.js', '*.css'] },
