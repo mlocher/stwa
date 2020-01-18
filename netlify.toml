@@ -1,8 +1,9 @@
 [build]
   base = "./"
-  command = "make build"
+  command = "cd functions; make build"
   publish = "./site/"
-  functions = "./functions/"
+  functions = "./functions/dist/"
+
 [build.environment]
   GO_IMPORT_PATH = "github.com/mlocher/stwa"
 
