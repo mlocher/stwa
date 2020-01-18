@@ -22,7 +22,7 @@
     "url": "https://github.com/mlocher/stwa/issues"
   },
   "homepage": "https://stwa.locher.at",
-  "devDependencies": {
+  "dependencies": {
     "@fullhuman/postcss-purgecss": "^1.3.0",
     "assets-webpack-plugin": "^3.9.10",
     "clean-webpack-plugin": "^3.0.0",
