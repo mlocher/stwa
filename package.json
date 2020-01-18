@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preview": "run-p preview:**",
-    "preview:site": "webpack --config webpack.dev.js",
+    "preview": "webpack-dev-server --config webpack.dev.js --hot",
     "build": "run-p build:**",
     "build:site": "webpack --config webpack.prod.js",
     "build:functions": "cd functions; make build"
@@ -40,6 +39,7 @@
     "tailwindcss": "^1.1.4",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
   }
 }

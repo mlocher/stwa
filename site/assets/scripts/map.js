@@ -28,7 +28,7 @@ function ready() {
     // STWA data & styling
     map.on('load', function() {
         var stwa = {
-            url: './api/stwa',
+            url: 'https://stwa.locher.at/api/stwa',
             updater: null
         }
 
@@ -40,9 +40,31 @@ function ready() {
             data: stwa.url,
             attribution: 'STWA data &copy; <a href="https://www.lsz-b.at/">LSZ Burgenland</a>'
         });
-        stwa.updater = window.setInterval(function() {
-            map.getSource('stwa').setData(stwa.url);
-        }, 60000);
+
+        function startUpdater() {
+            stwa.updater = window.setInterval(function() {
+                map.getSource('stwa').setData(stwa.url);
+            }, 6000);    
+        }
+        function clearUpdater() {
+            window.clearInterval(stwa.updater);
+        }
+        startUpdater();
+
+        function monitorNetworkConnection({ type }) {
+            if (type == "offline") {
+                document.getElementById("network-connected").classList.add("hidden");
+                document.getElementById("network-disconnected").classList.remove("hidden");
+                clearUpdater();
+            } else {
+                document.getElementById("network-connected").classList.remove("hidden");
+                document.getElementById("network-disconnected").classList.add("hidden");
+                startUpdater();
+            }
+        }
+        window.addEventListener("online", monitorNetworkConnection);
+        window.addEventListener("offline", monitorNetworkConnection);
+    
 
         map.addLayer({
             'id': 'stwa-status',
@@ -97,5 +119,5 @@ function ready() {
                     '#f8f9fa' ],
             }
         });
-    });
+    });    
 }
