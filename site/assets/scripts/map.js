@@ -28,7 +28,7 @@ function ready() {
     // STWA data & styling
     map.on('load', function() {
         var stwa = {
-            url: 'https://stwa.locher.at/api/stwa',
+            url: './api/stwa',
             updater: null
         }
 

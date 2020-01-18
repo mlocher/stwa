@@ -1,19 +1,21 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const AssetsPlugin = require('assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: {
       main: './site/assets/index.js',
   },
+
   output: {
     filename: './assets/[name].js',
     chunkFilename: './assets/[id].js',
     path: path.resolve(__dirname, 'dist/')    
   },
+
   module: {
     rules: [
       {
@@ -23,18 +25,18 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
-    new AssetsPlugin({
+      new AssetsPlugin({
         filename: './dist/assets/webpack.json',
         prettyPrint: true
+      }),
+      new HtmlWebpackPlugin({
+        template: './site/index.html'
       }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
         { from: 'site', to: './', ignore: ['*.js', '*.css'] },
     ]),
-    new MiniCssExtractPlugin({
-        filename: './assets/[name].css',
-        chunkFilename: './assets/[id].css'
-    })
   ]
 };
