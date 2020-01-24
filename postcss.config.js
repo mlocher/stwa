@@ -1,7 +1,8 @@
 const purgecss = require('@fullhuman/postcss-purgecss')({
     content: [
-      './site/styles/**/*.css',
+      './site/**/*.css',
       './site/**/*.html',
+      './site/**/*.md',
     ],
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
   });
