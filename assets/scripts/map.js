@@ -1,4 +1,3 @@
-import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1IjoibWxvY2hlciIsImEiOiJjazVmcG40dnowdGgyM2xtY3RxY2k3dm5oIn0.d13YAqiMPFPRtYBK7hJLSQ';
 
 document.addEventListener("DOMContentLoaded", ready);

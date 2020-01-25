@@ -1,14 +1,31 @@
 [build]
-  base = "./"
-  command = "npm run build"
+  base = "."
   publish = "./dist/"
+  command = "make build"
   functions = "./functions/dist/"
-
-[build.environment]
+[build.environment]  
   GO_IMPORT_PATH = "github.com/mlocher/stwa"
+
+[context.production]
+  command = "make build"
+[context.production.environment]
   NODE_ENV = "production"
+  HUGO_VERSION = "0.62.2"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview]
+  command = "make preview"
+[context.deploy-preview.environment]
+  NODE_ENV = "production"
+  HUGO_VERSION = "0.62.2"
 
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

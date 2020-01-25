@@ -1,3 +1,6 @@
+.DS_Store
 dist/*
+functions/dist/*
 node_modules
-webpack.json
+resources/_gen
+yarn-error.log
