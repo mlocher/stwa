@@ -4,5 +4,5 @@
 	{{ $mapboxgl := resources.Get "scripts/mapbox-gl.js" }}
 	{{ $map := resources.Get "scripts/map.js" }}
 	{{ $scripts := slice $mapboxgl $map | resources.Concat "scripts/stwa.js" | resources.Fingerprint "sha512" }}
-	<script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+	<script type="text/javascript" src="{{ $scripts.Permalink }}" integrity="{{ $scripts.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ end }}
