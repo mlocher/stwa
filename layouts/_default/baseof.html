@@ -8,7 +8,7 @@
   <title>{{ $.Site.Title }}</title>
 
   {{ $styles := resources.Get "styles/main.css" | resources.PostCSS (dict "config" "./postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen" />
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen" />
 </head>
 
 <body class="font-sans">
